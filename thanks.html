@@ -3,111 +3,283 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Спасибо за ответ — Даниил & Карина</title>
-
+    <title>Спасибо! — Даниил & Карина</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;1,400&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
-            min-height: 100vh;
-            background: #FAF7F2;
-            color: #2C2C2C;
             font-family: 'Inter', sans-serif;
+            background: #FAF7F2;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(184, 149, 106, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(201, 165, 154, 0.03) 0%, transparent 50%);
+            color: #2C2C2C;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 24px;
+            padding: 20px;
             text-align: center;
+            overflow-x: hidden;
         }
 
-        .card {
-            max-width: 680px;
-            width: 100%;
-            padding: 56px 32px;
+        .container {
+            max-width: 600px;
+            animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse-soft {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.05); opacity: 1; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Декоративные элементы */
+        .decor-top, .decor-bottom {
+            position: fixed;
+            opacity: 0.3;
+            animation: float 6s ease-in-out infinite;
+        }
+        .decor-top { top: 40px; left: 40px; }
+        .decor-bottom { bottom: 40px; right: 40px; animation-delay: 2s; }
+
+        /* Иконка успеха */
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 2rem;
+            border-radius: 50%;
+            background: rgba(184, 149, 106, 0.1);
             border: 1px solid rgba(184, 149, 106, 0.3);
-            background: rgba(255, 255, 255, 0.35);
-            box-shadow: 0 20px 60px rgba(44, 44, 44, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse-soft 2s ease-in-out infinite;
         }
 
-        .monogram {
+        .success-icon svg {
+            width: 40px;
+            height: 40px;
+            stroke: #B8956A;
+        }
+
+        /* Заголовок */
+        .thanks-title {
             font-family: 'Great Vibes', cursive;
-            font-size: 72px;
+            font-size: clamp(4rem, 12vw, 7rem);
             color: #B8956A;
-            margin-bottom: 16px;
+            margin-bottom: 1rem;
+            line-height: 1;
         }
 
-        h1 {
+        /* Подзаголовок */
+        .thanks-subtitle {
             font-family: 'Playfair Display', serif;
-            font-size: 42px;
             font-style: italic;
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            color: #2C2C2C;
+            margin-bottom: 1.5rem;
             font-weight: 400;
-            margin-bottom: 20px;
         }
 
-        p {
+        /* Разделитель */
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem auto;
+            max-width: 300px;
+        }
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #B8956A, transparent);
+        }
+        .divider svg {
+            width: 20px;
+            height: 20px;
+            stroke: #B8956A;
+            flex-shrink: 0;
+        }
+
+        /* Текст */
+        .thanks-text {
+            font-size: 1rem;
+            line-height: 1.8;
             color: #4A4A4A;
-            font-size: 17px;
-            line-height: 1.7;
-            margin-bottom: 32px;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Подпись */
+        .signature {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5rem;
+            color: #B8956A;
+            margin: 2rem 0 1rem;
         }
 
         .date {
             font-family: 'Playfair Display', serif;
-            color: #B8956A;
-            font-size: 26px;
-            margin-bottom: 36px;
+            font-size: 1.1rem;
+            color: #8C6B4A;
+            letter-spacing: 0.1em;
+            margin-bottom: 3rem;
         }
 
-        a {
-            display: inline-block;
-            text-decoration: none;
+        /* Кнопка */
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2.5rem;
             background: #B8956A;
             color: #FAF7F2;
-            padding: 15px 32px;
+            text-decoration: none;
+            letter-spacing: 0.2em;
             text-transform: uppercase;
-            letter-spacing: 0.25em;
-            font-size: 12px;
-            transition: 0.3s ease;
+            font-size: 0.75rem;
+            font-weight: 500;
+            border-radius: 2px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
         }
-
-        a:hover {
+        .btn-back::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.6s;
+        }
+        .btn-back:hover::before { left: 100%; }
+        .btn-back:hover {
             background: #8C6B4A;
             transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(184, 149, 106, 0.3);
         }
 
-        .line {
-            width: 80px;
-            height: 1px;
-            background: #B8956A;
-            margin: 0 auto 28px;
+        /* Хэштег */
+        .hashtag {
+            margin-top: 3rem;
+            padding: 1rem 2rem;
+            border: 1px solid rgba(184, 149, 106, 0.3);
+            display: inline-block;
+            border-radius: 2px;
+        }
+        .hashtag-label {
+            font-size: 0.65rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: #8C6B4A;
+            margin-bottom: 0.5rem;
+        }
+        .hashtag-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            color: #2C2C2C;
+            font-style: italic;
+        }
+
+        /* Footer */
+        .footer {
+            position: fixed;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 0.7rem;
+            color: #8A8A8A;
+            letter-spacing: 0.15em;
+        }
+
+        @media (max-width: 640px) {
+            .decor-top, .decor-bottom { display: none; }
+            .container { padding: 0 10px; }
         }
     </style>
 </head>
 <body>
 
-    <main class="card">
-        <div class="monogram">Д & К</div>
+    <!-- Декоративные элементы -->
+    <svg class="decor-top" width="120" height="120" viewBox="0 0 100 100" fill="none" stroke="#B8956A" stroke-width="0.5">
+        <path d="M50 10 Q30 30 20 50 Q30 70 50 90 Q70 70 80 50 Q70 30 50 10" />
+        <path d="M50 10 L50 90" />
+        <path d="M50 30 Q35 35 25 45" />
+        <path d="M50 50 Q35 55 25 65" />
+    </svg>
+    <svg class="decor-bottom" width="100" height="100" viewBox="0 0 100 100" fill="none" stroke="#B8956A" stroke-width="0.5">
+        <circle cx="50" cy="50" r="30" />
+        <circle cx="50" cy="50" r="20" />
+        <circle cx="50" cy="50" r="10" />
+    </svg>
 
-        <div class="line"></div>
+    <div class="container">
+        <!-- Иконка успеха -->
+        <div class="success-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+        </div>
 
-        <h1>Спасибо за ваш ответ!</h1>
+        <!-- Заголовок -->
+        <h1 class="thanks-title">Спасибо!</h1>
+        <h2 class="thanks-subtitle">Ваш ответ получен</h2>
 
-        <p>
-            Мы получили ваше подтверждение и очень рады, что вы разделите с нами этот особенный день.
+        <!-- Разделитель -->
+        <div class="divider">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+            </svg>
+        </div>
+
+        <!-- Текст -->
+        <p class="thanks-text">
+            Мы очень рады, что вы будете с нами в этот особенный день. 
+            Ваш ответ сохранён — мы уже с нетерпением ждём встречи 
+            и готовим для вас незабываемый праздник.
         </p>
 
+        <!-- Подпись -->
+        <div class="signature">Даниил & Карина</div>
         <div class="date">3 августа 2026</div>
 
-        <a href="./index.html">Вернуться на сайт</a>
-    </main>
+        <!-- Кнопка возврата -->
+        <a href="./index.html" class="btn-back">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            Вернуться на сайт
+        </a>
+
+        <!-- Хэштег -->
+        <div class="hashtag">
+            <div class="hashtag-label">Хэштег свадьбы</div>
+            <div class="hashtag-value">#ДаниилИКарина2026</div>
+        </div>
+    </div>
+
+    <div class="footer">
+        С любовью, Даниил & Карина • 2026
+    </div>
 
 </body>
 </html>

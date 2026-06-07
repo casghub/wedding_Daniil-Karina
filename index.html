@@ -1117,6 +1117,29 @@ if (phoneInput) {
         }
     });
 }
+        //скрытие липкой-кнопки формы Подтвердите участие
+const stickyBtn = document.getElementById('stickyCta');
+const rsvpSection = document.getElementById('rsvp');
+
+if (stickyBtn && rsvpSection) {
+    const formObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            // Когда 25% формы видно — скрываем кнопку
+            if (entry.isIntersecting) {
+                stickyBtn.classList.remove('visible');
+                stickyBtn.style.pointerEvents = 'none'; // Блокируем клики
+            } else {
+                stickyBtn.classList.add('visible');
+                stickyBtn.style.pointerEvents = 'auto';
+            }
+        });
+    }, { 
+        threshold: 0.25, // Срабатывает, когда 25% формы входит в viewport
+        rootMargin: '0px 0px -100px 0px' // Небольшой отступ снизу для плавности
+    });
+
+    formObserver.observe(rsvpSection);
+}
     </script>
 </body>
 </html>

@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Даниил & Карина — 3 августа 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@200;300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ivory: '#FAF7F2',
+                        'ivory-dark': '#F0EBE3',
+                        gold: '#B8956A',
+                        'gold-light': '#D4B896',
+                        'gold-dark': '#8C6B4A',
+                        graphite: '#2C2C2C',
+                        'graphite-light': '#4A4A4A',
+                        sage: '#A8B5A0',
+                    },
+                    fontFamily: {
+                        script: ['Great Vibes', 'cursive'],
+                        serif: ['Playfair Display', 'serif'],
+                        'serif-alt': ['Cormorant Garamond', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    letterSpacing: {
+                        'widest-xl': '0.4em',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #FAF7F2;
+            color: #2C2C2C;
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #FAF7F2; }
+        ::-webkit-scrollbar-thumb { background: #B8956A; border-radius: 3px; }
+
+        .paper-texture {
+            background-color: #FAF7F2;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(184, 149, 106, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(201, 165, 154, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(168, 181, 160, 0.03) 0%, transparent 50%);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(2deg); }
+        }
+        @keyframes pulse-soft {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        .animate-fadeInUp { animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .animate-fadeIn { animation: fadeIn 1.5s ease-out forwards; }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        .animate-pulse-soft { animation: pulse-soft 3s ease-in-out infinite; }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-delay-1 { transition-delay: 0.15s; }
+        .reveal-delay-2 { transition-delay: 0.3s; }
+        .reveal-delay-3 { transition-delay: 0.45s; }
+        .reveal-delay-4 { transition-delay: 0.6s; }
+
+        .divider-ornament {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+        .divider-ornament::before,
+        .divider-ornament::after {
+            content: '';
+            height: 1px;
+            width: 80px;
+            background: linear-gradient(90deg, transparent, #B8956A, transparent);
+        }
+
+        .btn-gold {
+            background: #B8956A;
+            color: #FAF7F2;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-gold::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.6s;
+        }
+        .btn-gold:hover::before { left: 100%; }
+        .btn-gold:hover {
+            background: #8C6B4A;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(184, 149, 106, 0.3);
+        }
+
+        .btn-outline {
+            border: 1px solid #B8956A;
+            color: #B8956A;
+            transition: all 0.4s ease;
+        }
+        .btn-outline:hover {
+            background: #B8956A;
+            color: #FAF7F2;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 14px 0;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #D4C5B0;
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            color: #2C2C2C;
+            transition: border-color 0.3s ease;
+        }
+        .form-input:focus {
+            outline: none;
+            border-bottom-color: #B8956A;
+        }
+        .form-input::placeholder { color: #A8A090; }
+
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: linear-gradient(180deg, transparent, #B8956A, transparent);
+            transform: translateX(-50%);
+        }
+        @media (max-width: 768px) {
+            .timeline-line { left: 24px; }
+        }
+
+        .countdown-box {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(184, 149, 106, 0.2);
+        }
+
+        .color-swatch {
+            transition: transform 0.3s ease;
+        }
+        .color-swatch:hover {
+            transform: scale(1.1);
+        }
+
+        .sticky-cta {
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .sticky-cta.visible {
+            transform: translateY(0);
+        }
+
+        .img-romantic {
+            background: linear-gradient(135deg, #E8DDD0 0%, #D4C5B0 50%, #C9A59A 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .img-romantic::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 30% 40%, rgba(255,255,255,0.3) 0%, transparent 60%);
+        }
+
+        .section-py { padding-top: 6rem; padding-bottom: 6rem; }
+        @media (min-width: 768px) {
+            .section-py { padding-top: 8rem; padding-bottom: 8rem; }
+        }
+
+        .location-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+        .location-badge-primary {
+            background: rgba(184, 149, 106, 0.15);
+            color: #8C6B4A;
+            border: 1px solid rgba(184, 149, 106, 0.3);
+        }
+        .location-badge-secondary {
+            background: rgba(168, 181, 160, 0.2);
+            color: #5a6b52;
+            border: 1px solid rgba(168, 181, 160, 0.4);
+        }
+
+        .nav-dot {
+            transition: all 0.3s ease;
+        }
+        .nav-dot.active {
+            background: #B8956A;
+            transform: scale(1.3);
+        }
+
+        /* Dress code palette specific */
+        .palette-circle {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .palette-circle:hover {
+            transform: translateY(-6px) scale(1.05);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+        }
+
+        /* Success message */
+        .success-message {
+            display: none;
+            padding: 20px;
+            background: rgba(184, 149, 106, 0.1);
+            border: 1px solid rgba(184, 149, 106, 0.3);
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .success-message.visible {
+            display: block;
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body class="paper-texture">
+
+    <!-- Preloader -->
+    <div id="preloader" class="fixed inset-0 z-[100] bg-ivory flex items-center justify-center transition-opacity duration-1000">
+        <div class="text-center">
+            <div class="font-script text-6xl md:text-7xl text-gold mb-4 animate-pulse-soft">Д & К</div>
+            <div class="w-24 h-[1px] bg-gold mx-auto"></div>
+        </div>
+    </div>
+
+    <!-- Navigation Dots (Desktop) -->
+    <nav class="hidden lg:flex fixed right-8 top-1/2 -translate-y-1/2 z-40 flex-col gap-4">
+        <a href="#hero" class="nav-dot active w-2 h-2 rounded-full bg-gold" data-section="hero"></a>
+        <a href="#timeline" class="nav-dot w-2 h-2 rounded-full bg-gold/30 hover:bg-gold transition-all" data-section="timeline"></a>
+        <a href="#location" class="nav-dot w-2 h-2 rounded-full bg-gold/30 hover:bg-gold transition-all" data-section="location"></a>
+        <a href="#dresscode" class="nav-dot w-2 h-2 rounded-full bg-gold/30 hover:bg-gold transition-all" data-section="dresscode"></a>
+        <a href="#rsvp" class="nav-dot w-2 h-2 rounded-full bg-gold/30 hover:bg-gold transition-all" data-section="rsvp"></a>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden section-py">
+        <div class="absolute top-10 left-10 md:top-20 md:left-20 opacity-40 animate-float">
+            <svg width="120" height="120" viewBox="0 0 100 100" fill="none" stroke="#B8956A" stroke-width="0.5">
+                <path d="M50 10 Q30 30 20 50 Q30 70 50 90 Q70 70 80 50 Q70 30 50 10" />
+                <path d="M50 10 L50 90" />
+                <path d="M50 30 Q35 35 25 45" />
+                <path d="M50 50 Q35 55 25 65" />
+                <path d="M50 30 Q65 35 75 45" />
+                <path d="M50 50 Q65 55 75 65" />
+            </svg>
+        </div>
+        <div class="absolute bottom-10 right-10 md:bottom-20 md:right-20 opacity-40 animate-float" style="animation-delay: 2s;">
+            <svg width="100" height="100" viewBox="0 0 100 100" fill="none" stroke="#C9A59A" stroke-width="0.5">
+                <circle cx="50" cy="50" r="30" />
+                <circle cx="50" cy="50" r="20" />
+                <circle cx="50" cy="50" r="10" />
+                <path d="M50 20 L50 80 M20 50 L80 50" />
+            </svg>
+        </div>
+
+        <div class="relative max-w-5xl mx-auto px-6 text-center">
+            <div class="reveal mb-8">
+                <div class="divider-ornament">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B8956A" stroke-width="1">
+                        <path d="M12 2L14 8L20 10L14 12L12 18L10 12L4 10L10 8Z" />
+                    </svg>
+                </div>
+            </div>
+
+            <div class="reveal reveal-delay-1 mb-6">
+                <p class="text-sm md:text-base tracking-widest-xl uppercase text-gold-dark font-light">
+                    Приглашаем вас разделить с нами
+                </p>
+            </div>
+
+            <div class="reveal reveal-delay-2 mb-8">
+                <h1 class="font-script text-7xl sm:text-8xl md:text-9xl lg:text-[10rem] text-graphite leading-none">
+                    Даниил
+                </h1>
+                <div class="flex items-center justify-center gap-6 my-4">
+                    <div class="h-[1px] w-16 md:w-24 bg-gold"></div>
+                    <span class="font-serif italic text-2xl md:text-3xl text-gold">&</span>
+                    <div class="h-[1px] w-16 md:w-24 bg-gold"></div>
+                </div>
+                <h1 class="font-script text-7xl sm:text-8xl md:text-9xl lg:text-[10rem] text-graphite leading-none">
+                    Карина
+                </h1>
+            </div>
+
+            <div class="reveal reveal-delay-3 mb-12">
+                <p class="font-serif text-lg md:text-xl text-graphite-light tracking-wide">
+                    третье августа
+                </p>
+                <p class="font-serif text-4xl md:text-5xl text-gold mt-2">2026</p>
+            </div>
+
+            <div class="reveal reveal-delay-4">
+                <div class="grid grid-cols-4 gap-3 md:gap-6 max-w-2xl mx-auto mb-12">
+                    <div class="countdown-box rounded-lg p-3 md:p-5">
+                        <div id="days" class="font-serif text-3xl md:text-5xl text-graphite">000</div>
+                        <div class="text-[10px] md:text-xs tracking-widest uppercase text-gold-dark mt-1">дней</div>
+                    </div>
+                    <div class="countdown-box rounded-lg p-3 md:p-5">
+                        <div id="hours" class="font-serif text-3xl md:text-5xl text-graphite">00</div>
+                        <div class="text-[10px] md:text-xs tracking-widest uppercase text-gold-dark mt-1">часов</div>
+                    </div>
+                    <div class="countdown-box rounded-lg p-3 md:p-5">
+                        <div id="minutes" class="font-serif text-3xl md:text-5xl text-graphite">00</div>
+                        <div class="text-[10px] md:text-xs tracking-widest uppercase text-gold-dark mt-1">минут</div>
+                    </div>
+                    <div class="countdown-box rounded-lg p-3 md:p-5">
+                        <div id="seconds" class="font-serif text-3xl md:text-5xl text-graphite">00</div>
+                        <div class="text-[10px] md:text-xs tracking-widest uppercase text-gold-dark mt-1">секунд</div>
+                    </div>
+                </div>
+
+                <a href="#rsvp" class="btn-gold inline-block px-10 py-4 text-sm tracking-widest-xl uppercase rounded-sm">
+                    Подтвердить участие
+                </a>
+            </div>
+
+            <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-pulse-soft">
+                <svg width="24" height="40" viewBox="0 0 24 40" fill="none" stroke="#B8956A" stroke-width="1">
+                    <rect x="1" y="1" width="22" height="38" rx="11" />
+                    <circle cx="12" cy="10" r="2" fill="#B8956A">
+                        <animate attributeName="cy" values="10;20;10" dur="2s" repeatCount="indefinite" />
+                    </circle>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- TIMELINE -->
+    <section id="timeline" class="section-py relative">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-20 reveal">
+                <p class="text-xs tracking-widest-xl uppercase text-gold mb-4">Программа дня</p>
+                <h2 class="font-serif text-4xl md:text-6xl text-graphite italic">Тайминг торжества</h2>
+                <p class="text-graphite-light mt-6 font-light max-w-xl mx-auto">
+                    Наш день пройдёт в двух локациях Санкт-Петербурга и Ленинградской области
+                </p>
+            </div>
+
+            <!-- Location 1 -->
+            <div class="mb-16 reveal">
+                <div class="text-center mb-10">
+                    <span class="location-badge location-badge-primary">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                        Локация №1
+                    </span>
+                    <h3 class="font-serif text-2xl md:text-3xl text-graphite mt-4 italic">Дворец бракосочетания №1</h3>
+                    <p class="text-sm text-graphite-light mt-2">Санкт-Петербург, Английская наб., 28</p>
+                </div>
+
+                <div class="relative">
+                    <div class="timeline-line"></div>
+
+                    <div class="relative grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                        <div class="md:text-right md:pr-12">
+                            <p class="font-serif text-3xl md:text-4xl text-gold mb-2">9:30</p>
+                            <p class="text-xs tracking-widest-xl uppercase text-gold-dark mb-2">Сбор гостей</p>
+                            <p class="text-graphite-light font-light">Встречаемся у Дворца бракосочетания №1. Просим не опаздывать — церемония начнётся вовремя</p>
+                        </div>
+                        <div class="md:pl-12 flex md:justify-start justify-center">
+                            <div class="w-12 h-12 rounded-full bg-ivory border-2 border-gold flex items-center justify-center z-10">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B8956A" stroke-width="1.5">
+                                    <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+                                    <circle cx="9" cy="7" r="4"/>
+                                    <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                        <div class="md:order-2 md:pl-12">
+                            <p class="font-serif text-3xl md:text-4xl text-gold mb-2">10:00</p>
+                            <p class="text-xs tracking-widest-xl uppercase text-gold-dark mb-2">Церемония</p>
+                            <p class="text-graphite-light font-light">Торжественная церемония бракосочетания в одном из самых красивых дворцов Петербурга</p>
+                        </div>
+                        <div class="md:order-1 md:text-right md:pr-12 flex md:justify-end justify-center">
+                            <div class="w-12 h-12 rounded-full bg-ivory border-2 border-gold flex items-center justify-center z-10">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B8956A" stroke-width="1.5">
+                                    <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="md:text-right md:pr-12">
+                            <p class="font-serif text-3xl md:text-4xl text-gold mb-2">11:00 — 13:00</p>
+                            <p class="text-xs tracking-widest-xl uppercase text-gold-dark mb-2">Прогулка по городу</p>
+                            <p class="text-graphite-light font-light">Романтическая фотосессия с фотографом по знаковым местам Санкт-Петербурга</p>
+                        </div>
+                        <div class="md:pl-12 flex md:justify-start justify-center">
+                            <div class="w-12 h-12 rounded-full bg-ivory border-2 border-gold flex items-center justify-center z-10">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B8956A" stroke-width="1.5">
+                                    <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/>
+                                    <circle cx="12" cy="13" r="4"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center my-16 reveal">
+                <div class="inline-flex items-center gap-4 px-6 py-3 bg-ivory-dark rounded-full border border-gold/20">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B8956A" stroke-width="1.5">
+                        <rect x="1" y="3" width="15" height="13"/>
+                        <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+                        <circle cx="5.5" cy="18.5" r="2.5"/>
+                        <circle cx="18.5" cy="18.5" r="2.5"/>
+                    </svg>
+                    <span class="text-sm tracking-wider text-graphite-light">Дорога до ресторана · 13:00 — 14:00</span>
+                </div>
+            </div>
+
+            <!-- Location 2 -->
+            <div class="reveal">
+                <div class="text-center mb-10">
+                    <span class="location-badge location-badge-secondary">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+                            <polyline points="9 22 9 12 15 12 15 22"/>
+                        </svg>
+                        Локация №2
+                    </span>
+                    <h3 class="font-serif text-2xl md:text-3xl text-graphite mt-4 italic">Ресторан «Колокольная Горка»</h3>
+                    <p class="text-sm text-graphite-light mt-2">Приморское ш., 450, посёлок Репино</p>
+                </div>
+
+                <div class="relative">
+                    <div class="timeline-line"></div>
+
+                    <div class="relative grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                        <div class="md:text-right md:pr-12">
+                            <p class="font-serif text-3xl md:text-4xl text-gold mb-2">14:00 — 15:00</p>
+                            <p class="text-xs tracking-widest-xl uppercase text-gold-dark mb-2">Фуршет & Фотосессия</p>
+                            <p class="text-graphite-light font-light">Лёгкие закуски, приветственные напитки и фотосессия молодожёнов на территории ресторана</p>
+                        </div>
+                        <div class="md:pl-12 flex md:justify-start justify-center">
+                            <div class="w-12 h-12 rounded-full bg-ivory border-2 border-sage flex items-center justify-center z-10">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A8B5A0" stroke-width="1.5">
+                                    <path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/>
+                                    <line x1="6" y1="1" x2="6" y2="4"/>
+                                    <line x1="10" y1="1" x2="10" y2="4"/>
+                                    <line x1="14" y1="1" x2="14" y2="4"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                        <div class="md:order-2 md:pl-12">
+                            <p class="font-serif text-3xl md:text-4xl text-gold mb-2">15:00 — 20:00</p>
+                            <p class="text-xs tracking-widest-xl uppercase text-gold-dark mb-2">Праздничная программа</p>
+                            <p class="text-graphite-light font-light">Банкет, тосты, первый танец, конкурсы и веселье с ведущим</p>
+                        </div>
+                        <div class="md:order-1 md:text-right md:pr-12 flex md:justify-end justify-center">
+                            <div class="w-12 h-12 rounded-full bg-ivory border-2 border-sage flex items-center justify-center z-10">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A8B5A0" stroke-width="1.5">
+                                    <path d="M9 18V5l12-2v13"/>
+                                    <circle cx="6" cy="18" r="3"/>
+                                    <circle cx="18" cy="16" r="3"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                        <div class="md:text-right md:pr-12">
+                            <p class="font-serif text-3xl md:text-4xl text-gold mb-2">20:00</p>
+                            <p class="text-xs tracking-widest-xl uppercase text-gold-dark mb-2">Свадебный торт</p>
+                            <p class="text-graphite-light font-light">Традиционный момент разрезания торта и сладкое завершение вечера</p>
+                        </div>
+                        <div class="md:pl-12 flex md:justify-start justify-center">
+                            <div class="w-12 h-12 rounded-full bg-ivory border-2 border-sage flex items-center justify-center z-10">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A8B5A0" stroke-width="1.5">
+                                    <path d="M20 21v-8a2 2 0 00-2-2H6a2 2 0 00-2 2v8"/>
+                                    <path d="M4 16s.5-1 2-1 2.5 2 4 2 2.5-2 4-2 2.5 2 4 2 2-1 2-1"/>
+                                    <path d="M2 21h20"/>
+                                    <path d="M7 8v3M12 8v3M17 8v3"/>
+                                    <path d="M7 4h.01M12 4h.01M17 4h.01"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="md:order-2 md:pl-12">
+                            <p class="font-serif text-3xl md:text-4xl text-gold mb-2">23:00</p>
+                            <p class="text-xs tracking-widest-xl uppercase text-gold-dark mb-2">Завершение вечера</p>
+                            <p class="text-graphite-light font-light">Фейерверк, бенгальские огни и тёплые объятия на прощание</p>
+                        </div>
+                        <div class="md:order-1 md:text-right md:pr-12 flex md:justify-end justify-center">
+                            <div class="w-12 h-12 rounded-full bg-ivory border-2 border-sage flex items-center justify-center z-10">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A8B5A0" stroke-width="1.5">
+                                    <path d="M12 2L14 8L20 10L14 12L12 18L10 12L4 10L10 8Z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOCATION -->
+    <section id="location" class="section-py bg-ivory-dark/50">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <p class="text-xs tracking-widest-xl uppercase text-gold mb-4">Место встречи</p>
+                <h2 class="font-serif text-4xl md:text-6xl text-graphite italic">Ресторан «Колокольная Горка»</h2>
+                <p class="text-graphite-light mt-6 font-light max-w-xl mx-auto">
+                    Уютный ресторан на берегу Финского залива в посёлке Репино — идеальное место для празднования
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="reveal reveal-delay-1">
+                    <h3 class="font-serif text-3xl md:text-4xl text-graphite mb-4 italic">Колокольная Горка</h3>
+                    <div class="h-[1px] w-16 bg-gold mb-6"></div>
+                    <p class="text-graphite-light leading-relaxed mb-6 font-light">
+                        Ресторан с панорамным видом на Финский залив, уютной атмосферой и изысканной кухней. Живописная территория на берегу создаст незабываемую атмосферу нашего праздника.
+                    </p>
+                    <div class="space-y-3 mb-8">
+                        <div class="flex items-start gap-3">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B8956A" stroke-width="1.5" class="flex-shrink-0 mt-0.5">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            <p class="text-graphite text-sm">Приморское шоссе, 450, посёлок Репино, Санкт-Петербург</p>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B8956A" stroke-width="1.5" class="flex-shrink-0 mt-0.5">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                            <p class="text-graphite text-sm">~40 минут от центра Санкт-Петербурга</p>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B8956A" stroke-width="1.5" class="flex-shrink-0 mt-0.5">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+                                <polyline points="9 22 9 12 15 12 15 22"/>
+                            </svg>
+                            <p class="text-graphite text-sm">Трансфер для гостей будет организован</p>
+                        </div>
+                    </div>
+                    <a href="https://gorkarest.ru/" target="_blank" class="btn-outline inline-block px-8 py-3 text-sm tracking-widest-xl uppercase rounded-sm">
+                        Посмотреть ресторан
+                    </a>
+                </div>
+
+                <div class="reveal reveal-delay-2">
+                    <div class="img-romantic aspect-square rounded-sm relative overflow-hidden">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#B8956A" stroke-width="0.5" class="opacity-50">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+                                <polyline points="9 22 9 12 15 12 15 22"/>
+                            </svg>
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-graphite/40 to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 right-6 text-center">
+                            <p class="font-script text-4xl text-white">Колокольная Горка</p>
+                            <p class="text-xs tracking-widest uppercase text-white/80 mt-2">Посёлок Репино</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DRESS CODE -->
+    <section id="dresscode" class="section-py">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <p class="text-xs tracking-widest-xl uppercase text-gold mb-4">Дресс-код</p>
+                <h2 class="font-serif text-4xl md:text-6xl text-graphite italic">Палитра вечера</h2>
+                <p class="text-graphite-light mt-6 max-w-xl mx-auto font-light">
+                    Мы будем рады, если ваш наряд будет гармонировать с цветовой гаммой нашего торжества
+                </p>
+            </div>
+
+            <!-- Palette Row 1: Warm tones -->
+            <div class="reveal">
+                <div class="text-center mb-6">
+                    <p class="text-xs tracking-widest uppercase text-gold-dark/70 font-light">Тёплые оттенки</p>
+                </div>
+                <div class="grid grid-cols-4 md:grid-cols-8 gap-4 md:gap-6 mb-12">
+                    <div class="text-center">
+                        <div class="palette-circle w-full aspect-square rounded-full bg-[#F2C4A2] mb-3"></div>
+                        <p class="text-xs tracking-wider text-graphite">Персик</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="palette-circle w-full aspect-square rounded-full bg-[#F5DEB3] mb-3"></div>
+                        <p class="text-xs tracking-wider text-graphite">Пшеница</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="palette-circle w-full aspect-square rounded-full bg-[#F5F0D0] mb-3"></div>
+                        <p class="text-xs tracking-wider text-graphite">Сливки</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="palette-circle w-full aspect-square rounded-full bg-[#E8D5C0] mb-3"></div>
+                        <p class="text-xs tracking-wider text-graphite">Айвори</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="palette-circle w-full aspect-square rounded-full bg-[#E8C8C0] mb-3"></div>
+                        <p class="text-xs tracking-wider text-graphite">Розовый беж</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="palette-circle w-full aspect-square rounded-full bg-[#D4A898] mb-3"></div>
+                        <p class="text-xs tracking-wider text-graphite">Пыльная роза</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="palette-circle w-full aspect-square rounded-full bg-[#C9A59A] mb-3"></div>
+                        <p class="text-xs tracking-wider text-graphite">Терракота</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="palette-circle w-full aspect-square rounded-full bg-[#B88868] mb-3"></div>
+                        <p class="text-xs tracking-wider text-graphite">Карамель</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Palette Row 2: Cool tones -->
+            <div class="reveal reveal-delay-1">
+                <div class="text-center mb-6">
+                    <p class="text-xs tracking-widest uppercase text-gold-dark/70 font-light">Холодные оттенки</p>
+                </div>
+                <div class="grid grid-cols-4 md:grid-cols-8 gap-4 md:gap-6 mb-12">
+                    <div class="text-center">
+                        <div class="palette-circle w-full aspect-square rounded-full bg-[#DDE5D0] mb-3"></div>
+                        <p class="text-xs tracking-wider text-graphite">Светлый шалфей</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="palette-circle w-full aspect-square rounded-full bg-[#C5D5C0] mb-3"></div>
+                        <p class="text-xs tracking-wider text-graphite">Мята</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="palette-circle w-full aspect-square rounded-full bg-[#A8B5A0] mb-3"></div>
+                        <p class="text-xs tracking-wider text-graphite">Шалфей</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="palette-circle w-full aspect-square rounded-full bg-[#8B9D83] mb-3"></div>
+                        <p class="text-xs tracking-wider text-graphite">Олива</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="palette-circle w-full aspect-square rounded-full bg-[#5C6B5E] mb-3"></div>
+                        <p class="text-xs tracking-wider text-graphite">Sage Moss</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="palette-circle w-full aspect-square rounded-full bg-[#B8C6D4] mb-3"></div>
+                        <p class="text-xs tracking-wider text-graphite">Голубой</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="palette-circle w-full aspect-square rounded-full bg-[#C8D0E0] mb-3"></div>
+                        <p class="text-xs tracking-wider text-graphite">Василёк</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="palette-circle w-full aspect-square rounded-full bg-[#D8DDE0] mb-3"></div>
+                        <p class="text-xs tracking-wider text-graphite">Жемчуг</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center reveal reveal-delay-2">
+                <div class="inline-block border border-gold/30 rounded-sm p-8 md:p-12 max-w-2xl bg-ivory/50">
+                    <p class="font-serif-alt text-lg md:text-xl text-graphite italic leading-relaxed">
+                        Просим воздержаться от белого цвета — он зарезервирован для невесты. <br>
+                        Мужчинам — классические костюмы в тёмных тонах.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GIFTS -->
+    <section class="section-py bg-ivory-dark/50">
+        <div class="max-w-3xl mx-auto px-6 text-center">
+            <div class="reveal">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#B8956A" stroke-width="1" class="mx-auto mb-6">
+                    <polyline points="20 12 20 22 4 22 4 12"/>
+                    <rect x="2" y="7" width="20" height="5"/>
+                    <line x1="12" y1="22" x2="12" y2="7"/>
+                    <path d="M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7z"/>
+                    <path d="M12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/>
+                </svg>
+                <p class="text-xs tracking-widest-xl uppercase text-gold mb-4">О подарках</p>
+                <h2 class="font-serif text-4xl md:text-5xl text-graphite italic mb-8">Ваше присутствие — лучший подарок</h2>
+                <div class="h-[1px] w-16 bg-gold mx-auto mb-8"></div>
+                <p class="text-graphite-light leading-relaxed font-light text-lg">
+                    Если вы хотите сделать нам подарок, мы будем рады вкладу в наше свадебное путешествие. 
+                    Конверты можно будет оставить на специальном столике в день торжества.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- RSVP -->
+    <section id="rsvp" class="section-py relative">
+        <div class="max-w-3xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <p class="text-xs tracking-widest-xl uppercase text-gold mb-4">Подтверждение</p>
+                <h2 class="font-serif text-4xl md:text-6xl text-graphite italic">Ждём вашего ответа</h2>
+                <p class="text-graphite-light mt-6 font-light">Пожалуйста, подтвердите ваше присутствие до 1 июля 2026</p>
+            </div>
+
+            <!-- Форма с FormSubmit -->
+            <form 
+                action="https://formsubmit.co/cascasovich@gmail.com" 
+                method="POST"
+                class="reveal reveal-delay-1 space-y-8"
+            >
+                <!-- Скрытые настройки FormSubmit -->
+                <input type="hidden" name="_subject" value="Новая заявка с сайта свадьбы Даниила и Карины!">
+                <input type="hidden" name="_captcha" value="true">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_next" value="">
+                <input type="hidden" name="_autoresponse" value="Спасибо за подтверждение! Мы получили ваш ответ и с нетерпением ждём встречи с вами на нашем торжестве. С любовью, Даниил & Карина">
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <label class="text-xs tracking-widest-xl uppercase text-gold-dark block mb-2">Ваше имя</label>
+                        <input type="text" name="Имя" class="form-input" placeholder="Имя и фамилия" required>
+                    </div>
+                    <div>
+                        <label class="text-xs tracking-widest-xl uppercase text-gold-dark block mb-2">Телефон</label>
+                        <input type="tel" name="Телефон" class="form-input" placeholder="+7 (___) ___-__-__">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="text-xs tracking-widest-xl uppercase text-gold-dark block mb-4">Присутствие</label>
+                    <div class="grid grid-cols-2 gap-4">
+                        <label class="cursor-pointer">
+                            <input type="radio" name="Присутствие" value="С радостью приду" class="hidden peer" checked>
+                            <div class="border border-gold/30 rounded-sm p-4 text-center peer-checked:bg-gold peer-checked:text-ivory transition-all">
+                                <p class="font-serif text-lg">С радостью приду</p>
+                            </div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="Присутствие" value="К сожалению, не смогу" class="hidden peer">
+                            <div class="border border-gold/30 rounded-sm p-4 text-center peer-checked:bg-graphite peer-checked:text-ivory transition-all">
+                                <p class="font-serif text-lg">К сожалению, не смогу</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="text-xs tracking-widest-xl uppercase text-gold-dark block mb-2">Количество гостей</label>
+                    <select name="Количество гостей" class="form-input bg-transparent">
+                        <option>1 персона</option>
+                        <option>2 персоны</option>
+                        <option>3 персоны</option>
+                        <option>4 персоны</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="text-xs tracking-widest-xl uppercase text-gold-dark block mb-2">Предпочтения в еде / Аллергии</label>
+                    <textarea name="Предпочтения" class="form-input resize-none" rows="3" placeholder="Расскажите о ваших предпочтениях..."></textarea>
+                </div>
+
+                <div class="text-center pt-4">
+                    <button type="submit" class="btn-gold px-12 py-4 text-sm tracking-widest-xl uppercase rounded-sm">
+                        Отправить ответ
+                    </button>
+                </div>
+            </form>
+
+            <!-- Уведомление об успешной отправке -->
+            <div id="successMessage" class="success-message">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#B8956A" stroke-width="1.5" class="mx-auto mb-4">
+                    <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+                    <polyline points="22 4 12 14.01 9 11.01"/>
+                </svg>
+                <h3 class="font-serif text-2xl text-graphite mb-2">Спасибо!</h3>
+                <p class="text-graphite-light font-light">Ваш ответ успешно отправлен. Мы получили ваше подтверждение и с нетерпением ждём встречи!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL -->
+    <section class="section-py bg-graphite text-ivory relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-10 left-10">
+                <svg width="200" height="200" viewBox="0 0 100 100" fill="none" stroke="#B8956A" stroke-width="0.5">
+                    <path d="M50 10 Q30 30 20 50 Q30 70 50 90 Q70 70 80 50 Q70 30 50 10"/>
+                </svg>
+            </div>
+            <div class="absolute bottom-10 right-10">
+                <svg width="200" height="200" viewBox="0 0 100 100" fill="none" stroke="#B8956A" stroke-width="0.5">
+                    <path d="M50 10 Q30 30 20 50 Q30 70 50 90 Q70 70 80 50 Q70 30 50 10"/>
+                </svg>
+            </div>
+        </div>
+
+        <div class="relative max-w-4xl mx-auto px-6 text-center">
+            <div class="reveal">
+                <p class="text-xs tracking-widest-xl uppercase text-gold mb-6">До встречи</p>
+                <h2 class="font-script text-7xl md:text-9xl text-ivory mb-8">Даниил & Карина</h2>
+                <div class="divider-ornament mb-8">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B8956A" stroke-width="1">
+                        <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+                    </svg>
+                </div>
+                <p class="font-serif text-2xl md:text-3xl text-gold mb-4">3 августа 2026</p>
+                <p class="text-ivory/60 font-light mb-12">Мы ждём вас</p>
+
+                <div class="inline-block border border-gold/30 rounded-sm px-8 py-4">
+                    <p class="text-xs tracking-widest-xl uppercase text-gold mb-2">Хэштег свадьбы</p>
+                    <p class="font-serif text-2xl text-ivory">#ДаниилИКарина2026</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-graphite border-t border-gold/20 py-8 text-center">
+        <p class="text-ivory/40 text-xs tracking-wider">С любовью, Даниил & Карина • 2026</p>
+    </footer>
+
+    <!-- Mobile Sticky CTA -->
+    <div id="stickyCta" class="sticky-cta fixed bottom-0 left-0 w-full bg-ivory/95 backdrop-blur-xl border-t border-gold/20 p-4 z-50 lg:hidden shadow-lg">
+        <a href="#rsvp" class="btn-gold flex items-center justify-center gap-2 w-full py-4 text-sm tracking-widest-xl uppercase rounded-sm">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+            </svg>
+            Подтвердить участие
+        </a>
+    </div>
+
+    <script>
+        // Preloader
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const preloader = document.getElementById('preloader');
+                preloader.style.opacity = '0';
+                setTimeout(() => preloader.style.display = 'none', 1000);
+            }, 1200);
+        });
+
+        // Scroll reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Countdown to August 3, 2026, 9:30 AM
+        const weddingDate = new Date('2026-08-03T09:30:00').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            if (distance < 0) {
+                document.getElementById('days').textContent = '0';
+                document.getElementById('hours').textContent = '0';
+                document.getElementById('minutes').textContent = '0';
+                document.getElementById('seconds').textContent = '0';
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = String(days).padStart(3, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // Sticky CTA
+        const stickyCta = document.getElementById('stickyCta');
+        const heroSection = document.getElementById('hero');
+        const stickyObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    stickyCta.classList.add('visible');
+                } else {
+                    stickyCta.classList.remove('visible');
+                }
+            });
+        }, { threshold: 0.3 });
+        stickyObserver.observe(heroSection);
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Nav dots active state
+        const sections = document.querySelectorAll('section[id]');
+        const navDots = document.querySelectorAll('.nav-dot');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 300) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navDots.forEach(dot => {
+                dot.classList.remove('active');
+                if (dot.dataset.section === current) {
+                    dot.classList.add('active');
+                }
+            });
+        });
+
+        // Проверка URL после отправки формы (FormSubmit редиректит обратно)
+        // Если есть параметр ?sent=true, показываем сообщение об успехе
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('sent') === 'true') {
+            const form = document.querySelector('#rsvp form');
+            const successMsg = document.getElementById('successMessage');
+            if (form) form.style.display = 'none';
+            if (successMsg) successMsg.classList.add('visible');
+        }
+    </script>
+</body>
+</html>
+
+   action="https://formsubmit.co/cascasovich@gmail.com"
+   method="POST"
+   
+<input type="hidden" name="_next" value="https://ваш-домен.ru/thanks.html">
+
+

@@ -260,6 +260,50 @@
             display: block;
             animation: fadeInUp 0.6s ease-out;
         }
+        * Мобильная версия таймлайна — исправление */
+@media (max-width: 767px) {
+    .timeline-line { 
+        left: 24px !important; 
+    }
+    
+    /* Каждый блок событий — горизонтальный flex */
+    #timeline .relative.grid.grid-cols-1 {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: flex-start !important;
+        gap: 1rem !important;
+    }
+    
+    /* Кружок — слева, фиксированного размера */
+    #timeline .relative.grid.grid-cols-1 > div:last-child {
+        order: -1 !important;
+        flex-shrink: 0;
+        width: 48px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        justify-content: flex-start !important;
+    }
+    
+    /* Текст — справа, занимает оставшееся место */
+    #timeline .relative.grid.grid-cols-1 > div:first-child {
+        order: 2 !important;
+        flex: 1;
+        text-align: left !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    
+    /* Убираем правый padding у текста на мобильной */
+    #timeline .md\\:text-right {
+        text-align: left !important;
+        padding-right: 0 !important;
+    }
+    
+    /* Убираем левый padding у кружка на мобильной */
+    #timeline .md\\:pl-12 {
+        padding-left: 0 !important;
+    }
+}
     </style>
 </head>
 <body class="paper-texture">

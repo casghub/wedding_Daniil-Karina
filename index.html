@@ -328,23 +328,38 @@
     <!-- HERO SECTION -->
     <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden section-py">
         <div class="absolute top-10 left-10 md:top-20 md:left-20 opacity-40 animate-float">
-            <svg width="120" height="120" viewBox="0 0 100 100" fill="none" stroke="#B8956A" stroke-width="0.5">
-                <path d="M50 10 Q30 30 20 50 Q30 70 50 90 Q70 70 80 50 Q70 30 50 10" />
-                <path d="M50 10 L50 90" />
-                <path d="M50 30 Q35 35 25 45" />
-                <path d="M50 50 Q35 55 25 65" />
-                <path d="M50 30 Q65 35 75 45" />
-                <path d="M50 50 Q65 55 75 65" />
-            </svg>
-        </div>
-        <div class="absolute bottom-10 right-10 md:bottom-20 md:right-20 opacity-40 animate-float" style="animation-delay: 2s;">
-            <svg width="100" height="100" viewBox="0 0 100 100" fill="none" stroke="#C9A59A" stroke-width="0.5">
-                <circle cx="50" cy="50" r="30" />
-                <circle cx="50" cy="50" r="20" />
-                <circle cx="50" cy="50" r="10" />
-                <path d="M50 20 L50 80 M20 50 L80 50" />
-            </svg>
-        </div>
+    <svg width="120" height="120" viewBox="0 0 100 100" ...>
+
+<div class="absolute top-10 left-10 md:top-20 md:left-20 opacity-40 animate-float hidden md:block">
+    <svg width="120" height="120" viewBox="0 0 100 100" ...>
+
+<!-- Декоративный элемент 1 — ботанический лист (только десктоп) -->
+<div class="absolute top-10 left-10 md:top-20 md:left-20 opacity-40 animate-float hidden md:block">
+    <svg width="120" height="120" viewBox="0 0 100 100" fill="none" stroke="#B8956A" stroke-width="0.5">
+        <path d="M50 10 Q30 30 20 50 Q30 70 50 90 Q70 70 80 50 Q70 30 50 10" />
+        <path d="M50 10 L50 90" />
+        <path d="M50 30 Q35 35 25 45" />
+        <path d="M50 50 Q35 55 25 65" />
+        <path d="M50 30 Q65 35 75 45" />
+        <path d="M50 50 Q65 55 75 65" />
+    </svg>
+</div>
+
+<!-- Декоративный элемент 2 — круги (только десктоп) -->
+<div class="absolute bottom-10 right-10 md:bottom-20 md:right-20 opacity-40 animate-float hidden md:block" style="animation-delay: 2s;">
+    <svg width="100" height="100" viewBox="0 0 100 100" fill="none" stroke="#C9A59A" stroke-width="0.5">
+        <circle cx="50" cy="50" r="30" />
+        <circle cx="50" cy="50" r="20" />
+        <circle cx="50" cy="50" r="10" />
+        <path d="M50 20 L50 80 M20 50 L80 50" />
+    </svg>
+</div>
+
+<div class="absolute top-10 left-10 md:top-20 md:left-20 opacity-20 md:opacity-40 animate-float">
+    <svg class="w-16 h-16 md:w-[120px] md:h-[120px]" viewBox="0 0 100 100" fill="none" stroke="#B8956A" stroke-width="0.5">
+        ...
+    </svg>
+</div>
 
         <div class="relative max-w-5xl mx-auto px-6 text-center">
             <div class="reveal mb-8">

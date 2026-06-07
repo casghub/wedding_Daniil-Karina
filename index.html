@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Даниил & Карина — 3 августа 2026</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,6 +38,15 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
+        
+        /* Глобальное исправление отступа справа */
+        html, body {
+            overflow-x: hidden !important;
+            width: 100% !important;
+            max-width: 100vw !important;
+            position: relative;
+        }
+        
         body {
             font-family: 'Inter', sans-serif;
             background: #FAF7F2;
@@ -65,10 +74,6 @@
             from { opacity: 0; }
             to { opacity: 1; }
         }
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-10px) rotate(2deg); }
-        }
         @keyframes pulse-soft {
             0%, 100% { opacity: 0.6; }
             50% { opacity: 1; }
@@ -76,7 +81,6 @@
 
         .animate-fadeInUp { animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
         .animate-fadeIn { animation: fadeIn 1.5s ease-out forwards; }
-        .animate-float { animation: float 6s ease-in-out infinite; }
         .animate-pulse-soft { animation: pulse-soft 3s ease-in-out infinite; }
 
         .reveal {
@@ -164,21 +168,11 @@
             background: linear-gradient(180deg, transparent, #B8956A, transparent);
             transform: translateX(-50%);
         }
-        @media (max-width: 768px) {
-            .timeline-line { left: 24px; }
-        }
 
         .countdown-box {
             background: rgba(255, 255, 255, 0.4);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(184, 149, 106, 0.2);
-        }
-
-        .color-swatch {
-            transition: transform 0.3s ease;
-        }
-        .color-swatch:hover {
-            transform: scale(1.1);
         }
 
         .sticky-cta {
@@ -187,18 +181,6 @@
         }
         .sticky-cta.visible {
             transform: translateY(0);
-        }
-
-        .img-romantic {
-            background: linear-gradient(135deg, #E8DDD0 0%, #D4C5B0 50%, #C9A59A 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        .img-romantic::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at 30% 40%, rgba(255,255,255,0.3) 0%, transparent 60%);
         }
 
         .section-py { padding-top: 6rem; padding-bottom: 6rem; }
@@ -236,7 +218,6 @@
             transform: scale(1.3);
         }
 
-        /* Dress code palette specific */
         .palette-circle {
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
@@ -246,7 +227,6 @@
             box-shadow: 0 12px 24px rgba(0,0,0,0.15);
         }
 
-        /* Success message */
         .success-message {
             display: none;
             padding: 20px;
@@ -260,50 +240,92 @@
             display: block;
             animation: fadeInUp 0.6s ease-out;
         }
-    /* Мобильная версия таймлайна — исправление */
-@media (max-width: 767px) {
-    .timeline-line { 
-        left: 24px !important; 
-    }
-    
-    /* Каждый блок событий — горизонтальный flex */
-    #timeline .relative.grid.grid-cols-1 {
-        display: flex !important;
-        flex-direction: row !important;
-        align-items: flex-start !important;
-        gap: 1rem !important;
-    }
-    
-    /* Кружок — слева, фиксированного размера */
-    #timeline .relative.grid.grid-cols-1 > div:last-child {
-        order: -1 !important;
-        flex-shrink: 0;
-        width: 48px !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        justify-content: flex-start !important;
-    }
-    
-    /* Текст — справа, занимает оставшееся место */
-    #timeline .relative.grid.grid-cols-1 > div:first-child {
-        order: 2 !important;
-        flex: 1;
-        text-align: left !important;
-        padding: 0 !important;
-        margin: 0 !important;
-    }
-    
-    /* Убираем правый padding у текста на мобильной */
-    #timeline .md\\:text-right {
-        text-align: left !important;
-        padding-right: 0 !important;
-    }
-    
-    /* Убираем левый padding у кружка на мобильной */
-    #timeline .md\\:pl-12 {
-        padding-left: 0 !important;
-    }
-}
+
+        /* ============================================ */
+        /* МОБИЛЬНАЯ ВЕРСИЯ ТАЙМЛАЙНА                  */
+        /* ============================================ */
+        @media (max-width: 767px) {
+            .timeline-line { 
+                left: 24px !important; 
+            }
+            
+            #timeline .relative.grid {
+                display: flex !important;
+                flex-direction: row !important;
+                align-items: flex-start !important;
+                gap: 1rem !important;
+            }
+            
+            #timeline .relative.grid > div:last-child {
+                order: -1 !important;
+                flex-shrink: 0 !important;
+                width: 48px !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                justify-content: flex-start !important;
+            }
+            
+            #timeline .relative.grid > div:first-child {
+                order: 2 !important;
+                flex: 1 !important;
+                text-align: left !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+            
+            #timeline .md\:text-right {
+                text-align: left !important;
+                padding-right: 0 !important;
+            }
+            
+            #timeline .md\:pl-12 {
+                padding-left: 0 !important;
+            }
+        }
+
+        /* ============================================ */
+        /* ИСПРАВЛЕНИЕ ОТСТУПА СПРАВА НА МОБИЛЬНОЙ     */
+        /* ============================================ */
+        @media (max-width: 767px) {
+            html, body {
+                overflow-x: hidden !important;
+                width: 100% !important;
+                max-width: 100vw !important;
+            }
+            
+            section {
+                overflow-x: hidden;
+                max-width: 100%;
+            }
+            
+            .max-w-5xl,
+            .max-w-4xl,
+            .max-w-3xl,
+            .max-w-2xl {
+                max-width: 100% !important;
+            }
+            
+            #stickyCta {
+                left: 0 !important;
+                right: 0 !important;
+                width: 100vw !important;
+                max-width: 100vw !important;
+            }
+            
+            #preloader {
+                width: 100vw !important;
+                max-width: 100vw !important;
+            }
+            
+            .absolute {
+                max-width: 100vw;
+            }
+            
+            svg {
+                max-width: 100%;
+                height: auto;
+            }
+        }
     </style>
 </head>
 <body class="paper-texture">
@@ -322,84 +344,83 @@
         <a href="#timeline" class="nav-dot w-2 h-2 rounded-full bg-gold/30 hover:bg-gold transition-all" data-section="timeline"></a>
         <a href="#location" class="nav-dot w-2 h-2 rounded-full bg-gold/30 hover:bg-gold transition-all" data-section="location"></a>
         <a href="#dresscode" class="nav-dot w-2 h-2 rounded-full bg-gold/30 hover:bg-gold transition-all" data-section="dresscode"></a>
+        <a href="#gifts" class="nav-dot w-2 h-2 rounded-full bg-gold/30 hover:bg-gold transition-all" data-section="gifts"></a>
         <a href="#rsvp" class="nav-dot w-2 h-2 rounded-full bg-gold/30 hover:bg-gold transition-all" data-section="rsvp"></a>
     </nav>
 
     <!-- HERO SECTION -->
-   <!-- HERO SECTION -->
-<section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden section-py">
-    <div class="relative max-w-5xl mx-auto px-6 text-center">
-        <div class="reveal mb-8">
-            <div class="divider-ornament">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B8956A" stroke-width="1">
-                    <path d="M12 2L14 8L20 10L14 12L12 18L10 12L4 10L10 8Z" />
+    <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden section-py">
+        <div class="relative max-w-5xl mx-auto px-6 text-center">
+            <div class="reveal mb-8">
+                <div class="divider-ornament">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B8956A" stroke-width="1">
+                        <path d="M12 2L14 8L20 10L14 12L12 18L10 12L4 10L10 8Z" />
+                    </svg>
+                </div>
+            </div>
+
+            <div class="reveal reveal-delay-1 mb-6">
+                <p class="text-sm md:text-base tracking-widest-xl uppercase text-gold-dark font-light">
+                    Приглашаем вас разделить с нами этот праздник
+                </p>
+            </div>
+
+            <div class="reveal reveal-delay-2 mb-8">
+                <h1 class="font-script text-7xl sm:text-8xl md:text-9xl lg:text-[10rem] text-graphite leading-none">
+                    Даниил
+                </h1>
+                <div class="flex items-center justify-center gap-6 my-4">
+                    <div class="h-[1px] w-16 md:w-24 bg-gold"></div>
+                    <span class="font-serif italic text-2xl md:text-3xl text-gold">&</span>
+                    <div class="h-[1px] w-16 md:w-24 bg-gold"></div>
+                </div>
+                <h1 class="font-script text-7xl sm:text-8xl md:text-9xl lg:text-[10rem] text-graphite leading-none">
+                    Карина
+                </h1>
+            </div>
+
+            <div class="reveal reveal-delay-3 mb-12">
+                <p class="font-serif text-lg md:text-xl text-graphite-light tracking-wide">
+                    третье августа
+                </p>
+                <p class="font-serif text-4xl md:text-5xl text-gold mt-2">2026</p>
+            </div>
+
+            <div class="reveal reveal-delay-4">
+                <div class="grid grid-cols-4 gap-3 md:gap-6 max-w-2xl mx-auto mb-12">
+                    <div class="countdown-box rounded-lg p-3 md:p-5">
+                        <div id="days" class="font-serif text-3xl md:text-5xl text-graphite">000</div>
+                        <div class="text-[10px] md:text-xs tracking-widest uppercase text-gold-dark mt-1">дней</div>
+                    </div>
+                    <div class="countdown-box rounded-lg p-3 md:p-5">
+                        <div id="hours" class="font-serif text-3xl md:text-5xl text-graphite">00</div>
+                        <div class="text-[10px] md:text-xs tracking-widest uppercase text-gold-dark mt-1">часов</div>
+                    </div>
+                    <div class="countdown-box rounded-lg p-3 md:p-5">
+                        <div id="minutes" class="font-serif text-3xl md:text-5xl text-graphite">00</div>
+                        <div class="text-[10px] md:text-xs tracking-widest uppercase text-gold-dark mt-1">минут</div>
+                    </div>
+                    <div class="countdown-box rounded-lg p-3 md:p-5">
+                        <div id="seconds" class="font-serif text-3xl md:text-5xl text-graphite">00</div>
+                        <div class="text-[10px] md:text-xs tracking-widest uppercase text-gold-dark mt-1">секунд</div>
+                    </div>
+                </div>
+
+                <a href="#rsvp" class="btn-gold inline-block px-10 py-4 text-sm tracking-widest-xl uppercase rounded-sm">
+                    Подтвердить участие
+                </a>
+            </div>
+
+            <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-pulse-soft">
+                <svg width="24" height="40" viewBox="0 0 24 40" fill="none" stroke="#B8956A" stroke-width="1">
+                    <rect x="1" y="1" width="22" height="38" rx="11" />
+                    <circle cx="12" cy="10" r="2" fill="#B8956A">
+                        <animate attributeName="cy" values="10;20;10" dur="2s" repeatCount="indefinite" />
+                    </circle>
                 </svg>
             </div>
         </div>
-
-        <div class="reveal reveal-delay-1 mb-6">
-            <p class="text-sm md:text-base tracking-widest-xl uppercase text-gold-dark font-light">
-                Приглашаем вас разделить с нами этот праздник
-            </p>
-        </div>
-
-        <div class="reveal reveal-delay-2 mb-8">
-            <h1 class="font-script text-7xl sm:text-8xl md:text-9xl lg:text-[10rem] text-graphite leading-none">
-                Даниил
-            </h1>
-            <div class="flex items-center justify-center gap-6 my-4">
-                <div class="h-[1px] w-16 md:w-24 bg-gold"></div>
-                <span class="font-serif italic text-2xl md:text-3xl text-gold">&</span>
-                <div class="h-[1px] w-16 md:w-24 bg-gold"></div>
-            </div>
-            <h1 class="font-script text-7xl sm:text-8xl md:text-9xl lg:text-[10rem] text-graphite leading-none">
-                Карина
-            </h1>
-        </div>
-
-        <div class="reveal reveal-delay-3 mb-12">
-            <p class="font-serif text-lg md:text-xl text-graphite-light tracking-wide">
-                третье августа
-            </p>
-            <p class="font-serif text-4xl md:text-5xl text-gold mt-2">2026</p>
-        </div>
-
-        <div class="reveal reveal-delay-4">
-            <div class="grid grid-cols-4 gap-3 md:gap-6 max-w-2xl mx-auto mb-12">
-                <div class="countdown-box rounded-lg p-3 md:p-5">
-                    <div id="days" class="font-serif text-3xl md:text-5xl text-graphite">000</div>
-                    <div class="text-[10px] md:text-xs tracking-widest uppercase text-gold-dark mt-1">дней</div>
-                </div>
-                <div class="countdown-box rounded-lg p-3 md:p-5">
-                    <div id="hours" class="font-serif text-3xl md:text-5xl text-graphite">00</div>
-                    <div class="text-[10px] md:text-xs tracking-widest uppercase text-gold-dark mt-1">часов</div>
-                </div>
-                <div class="countdown-box rounded-lg p-3 md:p-5">
-                    <div id="minutes" class="font-serif text-3xl md:text-5xl text-graphite">00</div>
-                    <div class="text-[10px] md:text-xs tracking-widest uppercase text-gold-dark mt-1">минут</div>
-                </div>
-                <div class="countdown-box rounded-lg p-3 md:p-5">
-                    <div id="seconds" class="font-serif text-3xl md:text-5xl text-graphite">00</div>
-                    <div class="text-[10px] md:text-xs tracking-widest uppercase text-gold-dark mt-1">секунд</div>
-                </div>
-            </div>
-
-            <a href="#rsvp" class="btn-gold inline-block px-10 py-4 text-sm tracking-widest-xl uppercase rounded-sm">
-                Подтвердить участие
-            </a>
-        </div>
-
-        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-pulse-soft">
-            <svg width="24" height="40" viewBox="0 0 24 40" fill="none" stroke="#B8956A" stroke-width="1">
-                <rect x="1" y="1" width="22" height="38" rx="11" />
-                <circle cx="12" cy="10" r="2" fill="#B8956A">
-                    <animate attributeName="cy" values="10;20;10" dur="2s" repeatCount="indefinite" />
-                </circle>
-            </svg>
-        </div>
-    </div>
-</section>
-
+    </section>
 
     <!-- TIMELINE -->
     <section id="timeline" class="section-py relative">
@@ -628,37 +649,24 @@
                 </div>
 
                 <div class="reveal reveal-delay-2">
-    <div class="aspect-square rounded-sm relative overflow-hidden group">
-
-        <!-- Изображение ресторана -->
-        <img 
-            src="./assets/images/restik.png"
-            alt="Ресторан Колокольная Горка"
-            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            loading="lazy"
-        />
-
-        <!-- Градиентный оверлей -->
-        <div class="absolute inset-0 bg-gradient-to-t from-graphite/70 via-graphite/20 to-transparent"></div>
-
-        <!-- Декоративная рамка -->
-        <div class="absolute inset-4 border border-white/20 rounded-sm pointer-events-none"></div>
-
-        <!-- Текст поверх изображения -->
-        <div class="absolute bottom-6 left-6 right-6 text-center">
-            <p class="font-script text-4xl text-white drop-shadow-lg">
-                Колокольная Горка
-            </p>
-            <div class="w-12 h-[1px] bg-white/60 mx-auto my-3"></div>
-            <p class="text-xs tracking-widest uppercase text-white/80">
-                Посёлок Репино
-            </p>
-        </div>
-
-    </div>
-</div>
-
-</div>
+                    <div class="aspect-square rounded-sm relative overflow-hidden group">
+                        <img 
+                            src="./assets/images/restik.png"
+                            alt="Ресторан Колокольная Горка"
+                            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                            loading="lazy"
+                        />
+                        <div class="absolute inset-0 bg-gradient-to-t from-graphite/70 via-graphite/20 to-transparent"></div>
+                        <div class="absolute inset-4 border border-white/20 rounded-sm pointer-events-none"></div>
+                        <div class="absolute bottom-6 left-6 right-6 text-center">
+                            <p class="font-script text-4xl text-white drop-shadow-lg">
+                                Колокольная Горка
+                            </p>
+                            <div class="w-12 h-[1px] bg-white/60 mx-auto my-3"></div>
+                            <p class="text-xs tracking-widest uppercase text-white/80">
+                                Посёлок Репино
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -676,7 +684,6 @@
                 </p>
             </div>
 
-            <!-- Palette Row 1: Warm tones -->
             <div class="reveal">
                 <div class="text-center mb-6">
                     <p class="text-xs tracking-widest uppercase text-gold-dark/70 font-light">Тёплые оттенки</p>
@@ -717,7 +724,6 @@
                 </div>
             </div>
 
-            <!-- Palette Row 2: Cool tones -->
             <div class="reveal reveal-delay-1">
                 <div class="text-center mb-6">
                     <p class="text-xs tracking-widest uppercase text-gold-dark/70 font-light">Холодные оттенки</p>
@@ -769,7 +775,7 @@
         </div>
     </section>
 
-   <!-- GIFTS + TELEGRAM -->
+    <!-- GIFTS + TELEGRAM -->
     <section id="gifts" class="section-py bg-ivory-dark/50">
         <div class="max-w-3xl mx-auto px-6 text-center">
             <div class="reveal">
@@ -785,22 +791,18 @@
                 <div class="h-[1px] w-16 bg-gold mx-auto mb-8"></div>
                 <p class="text-graphite-light leading-relaxed font-light text-lg">
                     Чтобы не утруждать вас поиском подарков, мы будем рады принять ваши поздравления в конвертах. 
-                
                 </p>
-                <p class="text-graphite-light leading-relaxed font-light text-lg">
+                <p class="text-graphite-light leading-relaxed font-light text-lg mt-4">
                     Приятным комплиментом для нас вместо цветов так же будет конверт. 
-            
                 </p>
             </div>
 
-            <!-- Разделитель -->
             <div class="divider-ornament my-16 reveal reveal-delay-1">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B8956A" stroke-width="1">
                     <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
                 </svg>
             </div>
 
-            <!-- Telegram блок -->
             <div class="reveal reveal-delay-2">
                 <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#B8956A" stroke-width="1" class="mx-auto mb-6">
                     <path d="M21.198 2.433a2.242 2.242 0 00-1.022.215l-16.5 6.498a2.25 2.25 0 00.102 4.229l4.19 1.303 1.913 6.076a1.5 1.5 0 002.868.085l2.84-5.45 5.303 3.93a2.25 2.25 0 003.555-1.498l3.355-15.872a2.25 2.25 0 00-2.604-2.716z"/>
@@ -838,17 +840,17 @@
                 <p class="text-graphite-light mt-6 font-light">Пожалуйста, подтвердите ваше присутствие до 1 июля 2026</p>
             </div>
 
-            <!-- Форма с FormSubmit -->
-           <form 
-    action="https://formsubmit.co/cascasovich@gmail.com" 
-    method="POST"
-    class="reveal reveal-delay-1 space-y-8"
->
-    <input type="hidden" name="_subject" value="Новая заявка с сайта свадьбы Даниила и Карины!">
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_template" value="table">
-    <input type="hidden" name="_next" value="https://casghub.github.io/wedding_Daniil-Karina/thanks.html">
-    <input type="hidden" name="_autoresponse" value="Спасибо за подтверждение! Мы получили ваш ответ и с нетерпением ждём встречи с вами на нашем торжестве. С любовью, Даниил & Карина">
+            <form 
+                action="https://formsubmit.co/cascasovich@gmail.com" 
+                method="POST"
+                class="reveal reveal-delay-1 space-y-8"
+            >
+                <input type="hidden" name="_subject" value="Новая заявка с сайта свадьбы Даниила и Карины!">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_next" value="https://casghub.github.io/wedding_Daniil-Karina/thanks.html">
+                <input type="hidden" name="_autoresponse" value="Спасибо за подтверждение! Мы получили ваш ответ и с нетерпением ждём встречи с вами на нашем торжестве. С любовью, Даниил & Карина">
+                
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div>
                         <label class="text-xs tracking-widest-xl uppercase text-gold-dark block mb-2">Ваше имя</label>
@@ -900,7 +902,6 @@
                 </div>
             </form>
 
-            <!-- Уведомление об успешной отправке -->
             <div id="successMessage" class="success-message">
                 <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#B8956A" stroke-width="1.5" class="mx-auto mb-4">
                     <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
@@ -914,7 +915,8 @@
 
     <!-- FINAL -->
     <section class="section-py bg-graphite text-ivory relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10">
+        <!-- Декоративные SVG — скрыты на мобильной -->
+        <div class="absolute inset-0 opacity-10 hidden md:block">
             <div class="absolute top-10 left-10">
                 <svg width="200" height="200" viewBox="0 0 100 100" fill="none" stroke="#B8956A" stroke-width="0.5">
                     <path d="M50 10 Q30 30 20 50 Q30 70 50 90 Q70 70 80 50 Q70 30 50 10"/>
@@ -948,7 +950,7 @@
     </footer>
 
     <!-- Mobile Sticky CTA -->
-    <div id="stickyCta" class="sticky-cta fixed bottom-0 left-0 w-full bg-ivory/95 backdrop-blur-xl border-t border-gold/20 p-4 z-50 lg:hidden shadow-lg">
+    <div id="stickyCta" class="sticky-cta fixed bottom-0 left-0 right-0 w-screen bg-ivory/95 backdrop-blur-xl border-t border-gold/20 px-4 py-4 z-50 lg:hidden shadow-lg">
         <a href="#rsvp" class="btn-gold flex items-center justify-center gap-2 w-full py-4 text-sm tracking-widest-xl uppercase rounded-sm">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
                 <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
@@ -1053,22 +1055,21 @@
             });
         });
 
-        // Проверка после отправки формы (Формсабмит редиректит обратно)
-        // Если есть ?sent=true, показываем сообщение об успехе
-        const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.get('sent') === 'true') {
-            const form = document.querySelector('#rsvp form');
-            const successMsg = document.getElementById('successMessage');
-            if (form) form.style.display = 'none';
-            if (successMsg) successMsg.classList.add('visible');
+        // Принудительное исправление горизонтального скролла
+        function fixHorizontalScroll() {
+            const html = document.documentElement;
+            const body = document.body;
+            
+            html.style.overflowX = 'hidden';
+            body.style.overflowX = 'hidden';
+            html.style.width = '100%';
+            body.style.width = '100%';
         }
+
+        window.addEventListener('load', fixHorizontalScroll);
+        window.addEventListener('resize', fixHorizontalScroll);
+        window.addEventListener('DOMContentLoaded', fixHorizontalScroll);
     </script>
 </body>
 </html>
-
-   action="https://formsubmit.co/cascasovich@gmail.com"
-   method="POST"
-   
-<input type="hidden" name="_next" value="https://ваш-домен.ru/thanks.html">
-
 
